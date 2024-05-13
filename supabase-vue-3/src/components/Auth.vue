@@ -26,7 +26,8 @@ const handleLogin = async () => {
 <template>
   <form class="row flex-center flex" @submit.prevent="handleLogin">
     <div class="col-6 form-widget">
-      <h1 class="header">Supabase + Vue 3</h1>
+    <img src="./CLICKER.png" alt="hi">
+      <h1 class="header">ClickBaited</h1>
       <p class="description">Sign in via magic link with your email below</p>
       <div>
         <input class="inputField" required type="email" placeholder="Your email" v-model="email" />
