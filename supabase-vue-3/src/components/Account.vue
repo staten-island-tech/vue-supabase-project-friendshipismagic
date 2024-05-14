@@ -12,6 +12,8 @@ const website = ref('')
 const avatar_url = ref('')
 const count = ref('0')
 
+
+
 onMounted(() => {
   getProfile()
 })
@@ -87,8 +89,9 @@ async function signOut() {
     loading.value = false
   }
 }
+ 
 </script>
-
+// avatar upload widget
 <template>
   <form class="form-widget" @submit.prevent="updateProfile">
     <Avatar v-model:path="avatar_url" @upload="updateProfile" size="10" />
