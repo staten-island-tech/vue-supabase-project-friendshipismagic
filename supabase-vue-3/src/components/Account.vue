@@ -65,16 +65,15 @@ async function updateProfile() {
 
 const picList = [
   {name: 'Mr.Whalen',
-  image: "CLICKER.png"},
+  img: "CLICKER.png"},
 
-  {name: 'Mr.Henriques'},
+  {name: 'Mr.Henriques',
+  img: "henriques.png"},
 
-  {name: 'Mr.Colangelo'},
-
+  {name: 'Mr.Colangelo',
+  img: "colangelo.png"},
 ]
-async function changeTeacher(){
 
-}
 
 async function signOut() {
   try {
@@ -113,10 +112,9 @@ async function signOut() {
         :disabled="loading"
       />
     </div>
-
     <div>
       <button class="button block" @click="signOut" :disabled="loading">Sign Out</button>
-      <button>Change Teacher</button>
+      <button @click="changeTeacher">Change Teacher</button>
     </div>
   </form>
 </template>
