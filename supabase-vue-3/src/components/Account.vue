@@ -10,6 +10,7 @@ const loading = ref(true)
 const username = ref('')
 const website = ref('')
 const avatar_url = ref('')
+const count = ref('0')
 
 onMounted(() => {
   getProfile()
@@ -115,8 +116,10 @@ async function signOut() {
     </div>
 
     <div>
-      <button class="button block" @click="signOut" :disabled="loading">Sign Out</button>
+      <button class="button block" @click="signOut" :disabled="loading">Sign Out</button><br>
+      <!-- <button class="teacherClicker" @click="count++"><img src="./CLICKER.png" alt="hi">{{ count }}</button> -->
       <button>Change Teacher</button>
+      <button>Game</button>
     </div>
   </form>
 </template>
