@@ -13,6 +13,7 @@
   --lavendarwhip:#FAF5FF;
   --candyfloss:#FFEDFA;
   --blue: #084DA2;
+  --darkgreen:  #8aa956;
 }
 
 a {
@@ -51,7 +52,7 @@ button {
   background-color: var(--cloudwisp);
 }
 button:hover {
-  border-color: var(--blue);
+  border-color: var(--darkgreen);
 }
 button:focus,
 button:focus-visible {
