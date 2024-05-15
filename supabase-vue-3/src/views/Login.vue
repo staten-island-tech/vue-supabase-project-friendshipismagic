@@ -19,7 +19,6 @@
         <div class="buttoooons">
     <button @click="createAccount">Create Account</button>
     <button @click="login">Log In</button>
-    <!-- <button @click="seeCurrentUser"> session (for testing)</button> -->
     <button @click="logout">Log Out</button>
         </div>
    </div>
@@ -62,13 +61,11 @@ async function login(){
     }
     else {
         alert("Login was a success!")
+        const localUser = await supabase.auth.getSession();
+        console.log(localUser);
     }
 }
 
-// async function seeSession(){
-//     const localUser = await supabase.auth.getSession();
-//     console.log(localUser);
-// }
 
 async function logout(){
     const { error } = await supabase.auth.signOut();
@@ -89,7 +86,6 @@ async function logout(){
     margin-bottom: 5rem;
     display: flex;
     flex-direction: column;
-    /* width: 50%; */
     align-items: center;
     
 }
