@@ -26,13 +26,16 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <style scoped>
 nav{
-  display: flex;
-  justify-content: space-around;
+  display: flex;justify-content: space-around;align-items: center;
   background-color: #a262133e;
   border-radius: 1rem;
   width: 100%;
 }
 img{
   width: 150px;
+  margin-left: -3rem;
+}
+h1{
+  margin-left: -5rem;
 }
 </style>
