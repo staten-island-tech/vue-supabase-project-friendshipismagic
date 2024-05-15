@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import LoginView from '../views/login.vue'
+import LoginView from '../views/Login.vue'
 import GameView from '../views/gameView.vue'
 import LeaderBoard from '../views/leaderboardView.vue'
 import { supabase } from '../clients/supabase'
