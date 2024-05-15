@@ -1,7 +1,11 @@
 <template>
     <div>
-        <h1 class="title">About Page</h1>
-        <p>(Maybe) Awesome project. Please login to play. Enjoy!</p>
+<h1 class="title">LeaderBoard</h1>
+
+<div class="leaderboard">
+    <h2>Click to get to the top!</h2>
+    <p>im number one</p>
+</div>
     </div>
 </template>
 

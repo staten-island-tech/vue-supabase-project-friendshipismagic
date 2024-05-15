@@ -1,7 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import LoginView from '../views/Login.vue'
-import UnauthorizedView from '../views/UnauthorizedView.vue'
+import LoginView from '../views/login.vue'
+import GameView from '../views/gameView.vue'
+import LeaderBoard from '../views/leaderboardView.vue'
+import { supabase } from '../clients/supabase'
+
+let localUser
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,9 +16,10 @@ const router = createRouter({
       component: HomeView
     },
     {
-        path: '/secret',
-        name: 'secret',
-        component: () => import('../views/SecretView.vue')
+        path: '/accountInfo',
+        name: 'account',
+        component: () => import('../views/accountInfo.vue'),
+        meta: { requiresAuth: true }
     },
     {
         path: '/login',
@@ -22,11 +27,34 @@ const router = createRouter({
         component: LoginView
     },
     {
-        path: '/unauthorized',
-        name: 'aunauthorized',
-        component: UnauthorizedView
+        path: '/game',
+        name: 'game',
+        component: GameView,
+        meta: { requiresAuth: true }
+    },
+    {
+        path: '/leaderboard',
+        name: 'laderboard',
+        component: LeaderBoard,
     },
   ]
+})
+
+async function getUser(next){
+    localUser = await supabase.auth.getSession();
+    if(localUser.data.session === null){
+        alert("Please log in first.")
+    } else{
+        next();
+    }
+}
+
+router.beforeEach((to, from, next) => {
+    if (to.meta.requiresAuth){
+        getUser(next);
+    } else {
+        next();
+    }
 })
 
 export default router
