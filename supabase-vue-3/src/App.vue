@@ -40,6 +40,7 @@ nav{
   font-weight: 800;
   font-style: normal;
   justify-content: space-around;
+  align-items: center;
   background-color: #a262133e;
   border-radius: 1rem;
   width: 100%;
@@ -47,5 +48,9 @@ nav{
 
 img{
   width: 150px;
+  margin-left: -3rem;
+}
+h1{
+  margin-left: -5rem;
 }
 </style>
