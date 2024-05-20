@@ -1,29 +1,56 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/CLICKER.png" class="logo" alt="Whalen" height="1800px"/>
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-    </a>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+<div>
+
+  <nav>
+    <img src="./assets/logo.png" alt="whalen"><h1>ClickBaited</h1>
+    <RouterLink to="/">About Page</RouterLink>
+    <RouterLink to="/game">Play</RouterLink>
+    <RouterLink to="/leaderboard">LeaderBoard</RouterLink>
+    <RouterLink to="/accountInfo">Account Information</RouterLink>
+    <RouterLink to="/login">Login/Logout</RouterLink>
+  </nav>
+
+  <div class="page">
+    <Router-view />
   </div>
-  <HelloWorld msg="ClickBaited" />
+</div>
+
 </template>
 
+
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+h1{
+     font-family: "VT323", monospace;
+  font-weight: 800;
+  font-style: normal;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+nav{
+  display: flex;
+  font-family: "VT323", monospace;
+  font-weight: 800;
+  font-style: normal;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #a262133e;
+  border-radius: 1rem;
+  width: 100%;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+img{
+  width: 150px;
+  margin-left: -3rem;
+}
+h1{
+  margin-left: -5rem;
 }
 </style>
