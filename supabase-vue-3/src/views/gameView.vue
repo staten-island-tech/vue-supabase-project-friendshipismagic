@@ -14,6 +14,7 @@ const items = [
 {name: 'bob',
 price: 9.99,
 }
+
 ]
 </script>
 
