@@ -1,25 +1,56 @@
-<script setup>
-import { onMounted, ref } from 'vue'
-import Account from './components/Account.vue'
-import Auth from './components/Auth.vue'
-import { supabase } from './supabase'
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
 
-const session = ref()
-
-onMounted(() => {
-  supabase.auth.getSession().then(({ data }) => {
-    session.value = data.session
-  })
-
-  supabase.auth.onAuthStateChange((_, _session) => {
-    session.value = _session
-  })
-})
 </script>
 
 <template>
-  <div class="container" style="padding: 50px 0 100px 0">
-    <Account v-if="session" :session="session" />
-    <Auth v-else />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+<div>
+
+  <nav>
+    <img src="./assets/logo.png" alt="whalen"><h1>ClickBaited</h1>
+    <RouterLink to="/">About Page</RouterLink>
+    <RouterLink to="/game">Play</RouterLink>
+    <RouterLink to="/leaderboard">LeaderBoard</RouterLink>
+    <RouterLink to="/accountInfo">Account Information</RouterLink>
+    <RouterLink to="/login">Login/Logout</RouterLink>
+  </nav>
+
+  <div class="page">
+    <Router-view />
   </div>
+</div>
+
 </template>
+
+
+
+<style scoped>
+h1{
+     font-family: "VT323", monospace;
+  font-weight: 800;
+  font-style: normal;
+}
+
+nav{
+  display: flex;
+  font-family: "VT323", monospace;
+  font-weight: 800;
+  font-style: normal;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #a262133e;
+  border-radius: 1rem;
+  width: 100%;
+}
+
+img{
+  width: 150px;
+  margin-left: -3rem;
+}
+h1{
+  margin-left: -5rem;
+}
+</style>

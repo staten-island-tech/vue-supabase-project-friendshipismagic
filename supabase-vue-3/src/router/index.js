@@ -1,27 +1,60 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
+import LoginView from '../views/Login.vue'
+import GameView from '../views/gameView.vue'
+import LeaderBoard from '../views/leaderboardView.vue'
+import { supabase } from '../clients/supabase'
+
+let localUser
 
 const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
-    routes: [
-      {
-        path: '/pie',
-        name: 'bar',
-        component: BarView
-      },
-      {
-        path: '/bar',
-        name: 'pie',
-        component: PieView
-      },
-      {
-        path: '/',
-        name: 'options',
-        // route level code-splitting
-        // this generates a separate chunk (About.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: OptionsView
-      }
-    ]
-  })
-  
-  export default router
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: HomeView
+    },
+    {
+        path: '/accountInfo',
+        name: 'account',
+        component: () => import('../views/accountInfo.vue'),
+        meta: { requiresAuth: true }
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: LoginView
+    },
+    {
+        path: '/game',
+        name: 'game',
+        component: GameView,
+        meta: { requiresAuth: true }
+    },
+    {
+        path: '/leaderboard',
+        name: 'laderboard',
+        component: LeaderBoard,
+    },
+  ]
+})
+
+async function getUser(next){
+    localUser = await supabase.auth.getSession();
+    if(localUser.data.session === null){
+        alert("Please log in first.")
+    } else{
+        next();
+    }
+}
+
+router.beforeEach((to, from, next) => {
+    if (to.meta.requiresAuth){
+        getUser(next);
+    } else {
+        next();
+    }
+})
+
+export default router
