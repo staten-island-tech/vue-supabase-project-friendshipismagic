@@ -12,7 +12,32 @@
 
 const items = [
 {name: 'bob',
-price: 9.99,
+price: 500,
+img: "../assets/student1.png"
+},
+
+{name: 'bob',
+price: 500,
+img: "../assets/student1.png"
+},
+
+{name: 'bob',
+price: 500,
+img: "../assets/student1.png"
+},
+
+{name: 'bob',
+price: 500,
+img: "../assets/student1.png"
+},
+
+{name: 'bob',
+price: 600,
+img: "../assets/student1.png"
+},
+
+{name: 'bob',
+price: 1000,
 img: "../assets/student1.png"
 }
 
