@@ -16,9 +16,9 @@ const router = createRouter({
       component: HomeView
     },
     {
-        path: '/accountInfo',
+        path: '/AccountInfo',
         name: 'account',
-        component: () => import('../views/accountInfo.vue'),
+        component: () => import('../views/AccountInfo.vue'),
         meta: { requiresAuth: true }
     },
     {
@@ -34,7 +34,7 @@ const router = createRouter({
     },
     {
         path: '/leaderboard',
-        name: 'laderboard',
+        name: 'leaderboard',
         component: LeaderBoard,
     },
   ]
