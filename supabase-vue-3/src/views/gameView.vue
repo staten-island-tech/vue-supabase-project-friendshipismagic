@@ -45,5 +45,7 @@ img: "../assets/student1.png"
 </script>
 
 <style scoped>
-
+.container{
+        cursor: url(""), auto;
+}
 </style>
