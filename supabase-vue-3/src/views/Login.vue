@@ -39,7 +39,8 @@ async function createAccount(){
         password: password.value,
         options: {
             data: {
-                user_name: username.value
+                user_name: username.value,
+                click_count: ref(0)
             }
         } 
     })
@@ -58,6 +59,7 @@ async function login(){
     })
     if (error) {
         console.log(error)
+        alert("Please try again")
     }
     else {
         alert("Login was a success!")
@@ -71,6 +73,7 @@ async function logout(){
     const { error } = await supabase.auth.signOut();
     if (error) {
         console.log(error)
+        alert("Sorry, couldn't do that")
     }
     else {
         alert("Logout was a success!")
