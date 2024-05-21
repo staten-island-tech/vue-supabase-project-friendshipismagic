@@ -8,12 +8,12 @@
 </template>
 
 <script setup lang="ts">
-import GameComp from '../components/gameComp.vue';
 
 const items = [
 {name: 'bob',
 price: 9.99,
 }
+
 ]
 </script>
 
