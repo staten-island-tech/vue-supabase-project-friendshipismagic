@@ -3,6 +3,8 @@
         <img src="../assets/henriques.png" alt="punch">
         <img src="../assets/colangelo.png" alt="punch">
         <img src="../assets/logo.png" alt="punch">
+        <img src="../assets/punch.png" alt="punch">
+        
 
 </div>
 <GameComp />
@@ -13,7 +15,6 @@
 const items = [
 {name: 'bob',
 price: 9.99,
-img: "../assets/student1.png"
 }
 
 ]
