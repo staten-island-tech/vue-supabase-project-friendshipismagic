@@ -17,10 +17,20 @@ async function getSession(){
     console.log(account.value)
 }
 getSession();
+
+async function clickCounter(){
+const {data} = await supabase.auth.updateUser({click_count:'count.value'});
+};
+// async function clickCounter(){
+// const { user, error } = await supabase.auth.update({
+//   data: { click_count: 'count.value' }
+// });
+// };
+
 // async function clickCounter(){
 //   count.value++
 //     const { data, error } = await supabase.auth.updateUser(
- 
+
 //     )
 // }
 
