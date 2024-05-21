@@ -13,6 +13,7 @@
 const items = [
 {name: 'bob',
 price: 9.99,
+img: "../assets/student1.png"
 }
 
 ]
