@@ -21,7 +21,7 @@
       <tr>
         <th>1</th>
         <td>Cy Ganderton</td>
-        <td>6957</td>
+        <td>69420</td>
       </tr>
       <!-- row 2 -->
       <tr class="hover">
