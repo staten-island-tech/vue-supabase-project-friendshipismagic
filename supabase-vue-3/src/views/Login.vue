@@ -32,6 +32,7 @@ import { supabase } from "../clients/supabase";
 let email = ref("");
 let password = ref("");
 let username = ref("");
+let clickercount = ref(0)
 
 async function createAccount(){
     const { data, error } = await supabase.auth.signUp({
@@ -40,7 +41,7 @@ async function createAccount(){
         options: {
             data: {
                 user_name: username.value,
-                click_count: ref(0)
+                click_count: clickercount.value
             }
         } 
     })
