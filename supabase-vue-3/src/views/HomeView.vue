@@ -13,4 +13,7 @@
 .title{
     text-decoration: underline;
 }
+
+.container { cursor: url("../assets/punch.png"), auto;
+}
 </style>
