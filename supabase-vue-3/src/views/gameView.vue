@@ -1,5 +1,5 @@
 <template>
-<GameComp />
+<GameComp v-if="session" :session="session"/>
 <div>
         <!-- <h1 class="title">Game Page</h1>
   <img src="../assets/logo.png" @click="clickCounter" />
