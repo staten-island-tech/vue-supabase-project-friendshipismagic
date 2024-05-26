@@ -3,7 +3,6 @@
         <h1 class="title">Account Information</h1>
         <div class="accountInfoContainer">
         <p id="account"> 
-
             E-mail: {{ account.data.session.user.email}} <br>
             User Name: {{ account.data.session.user.user_metadata.user_name}} <br>
             Created At: {{ account.data.session.user.created_at }}
