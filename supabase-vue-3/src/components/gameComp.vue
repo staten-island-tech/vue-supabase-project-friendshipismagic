@@ -47,29 +47,29 @@ async function getProfile() {
   }
 }
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-// async function updateClicks() {
-//   clicker_count.value++
-//   try {
-//     loading.value = true
-//     const { user } = session.value
+async function updateClicks() {
+  clicker_count.value++
+  try {
+    loading.value = true
+    const { user } = session.value
 
-//     const updates = {
-//       id: user.id,
-//       clicker_count: 'clicker_count.value',
-//     }
-//     const { error } = await supabase.from('users').upsert(updates)
+    const updates = {
+      id: user.id,
+      clicker_count: 'clicker_count.value',
+    }
+    const { error } = await supabase.from('users').upsert(updates)
 
-//     if (error) throw error
-//   } catch (error) {
-//     alert(error.message)
-//   } finally {
-//     loading.value = false
-//   }
-// }
-
-async function updateClicks(){
-  console.log(session.value)
+    if (error) throw error
+  } catch (error) {
+    alert(error.message)
+  } finally {
+    loading.value = false
+  }
 }
+
+// async function updateClicks(){
+//   console.log(session.value)
+// }
 
 
 </script>
