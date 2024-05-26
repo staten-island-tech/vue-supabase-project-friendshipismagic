@@ -21,11 +21,6 @@ import { onMounted, ref } from 'vue'
 import { supabase } from "../clients/supabase";
 
 const session = ref()
-// export default {
-//       components: {
-//       GameComp
-//       }
-// };
 
 onMounted(() => {
   supabase.auth.getSession().then(({ data }) => {
