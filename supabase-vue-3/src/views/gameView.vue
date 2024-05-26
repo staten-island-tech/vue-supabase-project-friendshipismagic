@@ -15,17 +15,17 @@
 
 </template>
 
-<script>
+<script setup>
 import GameComp from '../components/gameComp.vue'
 import { onMounted, ref } from 'vue'
 import { supabase } from "../clients/supabase";
 
 const session = ref()
-export default {
-      components: {
-      GameComp
-      }
-};
+// export default {
+//       components: {
+//       GameComp
+//       }
+// };
 
 onMounted(() => {
   supabase.auth.getSession().then(({ data }) => {
