@@ -2,8 +2,8 @@
   <div>
     <h1 class="title">Game Page</h1>
   </div>
-  <img src="../assets/logo.png" />
-  <p>Punches: </p>
+  <img src="../assets/logo.png" @click ="clicked.value++"/>
+  <p>Punches: {{clicked}}</p>
 </template>
 
 <script setup lang="ts">
@@ -16,7 +16,8 @@ const { session } = toRefs(props);
 const loading = ref(true);
 const username = ref('');
 const email = ref('');
-const clicks = ref(0);
+const clicks = null;
+const clicked = null;
 
 // onMounted(() => {
 //   getProfile()
@@ -33,9 +34,12 @@ watchEffect (() => {
     .maybeSingle();
 
     console.log({ data })
+    clicked(data.clicks);
   };
   clickValue();
 } );
+
+
 // async function getProfile() {
 //   try {
 //     loading.value = true
