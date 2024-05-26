@@ -16,12 +16,12 @@
 import { supabase } from '../clients/supabase';
 import { ref } from "vue";
 
-// const account = ref();
-// getSession();
+const account = ref();
+getSession();
 
-// async function getSession(){
-//     account.value = await supabase.auth.getSession();
-// }
+async function getSession(){
+    account.value = await supabase.auth.getSession();
+}
 
 
 </script>
