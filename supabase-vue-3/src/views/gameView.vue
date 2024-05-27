@@ -1,64 +1,43 @@
 <template>
  <h1 class="title">Game Page</h1>
 <div class="clicktoPunch">
-  <img src="../assets/logo.png" @click="clickCounter" />
+  <img src="../assets/logo.png" @click= "updateClicks" />
         <!-- <img src="../assets/henriques.png" alt="punch">
         <img src="../assets/colangelo.png" alt="punch">
         <img src="../assets/logo.png" alt="punch">-->
         <br>
 <img class ="punchIcon" src="../assets/punch.png" alt="punch"> </div>
-<gameComp :clicksProp = 'clicks' />
+<gameComp />
 </template>
 
 <script>
 import { supabase } from '../clients/supabase';
 import gameComp from '../components/gameComp.vue'
 import { ref } from "vue";
+const clickCount = ref(0)
 
-const account = ref();
 
-async function getSession(){
-    account.value = await supabase.auth.getSession();
+
+const user = await supabase.auth.getSession();
+        console.log(user);
+
+
+const updateClicks = async () => {
+  clickCount.value++
+  try {
+    const { data, error } = await supabase
+    .from('profiles')
+    .update({ clicks: 10 })
+    .eq('id', user.id)
+    .select()
+
+      if(data){
+        console.log(data)
+      }
+  } catch (error) {
+    console.log(poop)
+  }
 }
-getSession();
-
-
-export default {
-  name: 'GameView',
-  components: { gameComp },
-    data(){
-        return {
-            loaded: false,
-            clicks: [],
-        };
-    },
-    mounted: function(){
-        this.fetchData();
-    },
-    methods: {
-        fetchData: async function(){
-         this.loaded = false
-
-            try{
-                const results = await supabase
-                .from("profiles")
-                .select("clicks")
-                .eq("id", account.id)
-                .limit(1)
-                .single()
-                
-                // const data = await results.json();
-                this.clicks = results;          
-                
-                console.log({results});
-                this.loaded=true
-            } catch(error){
-                console.log(error);
-            }
-        }
-    }
-}
-
 
 const items = [
 {name: 'bob',

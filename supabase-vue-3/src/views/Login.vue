@@ -39,7 +39,8 @@ async function createAccount(){
         password: password.value,
         options: {
             data: {
-                user_name: username.value
+                user_name: username.value,
+                // clicks: ref(0)
             }
         } 
     })
