@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <h1 class="title">Game Page</h1>
+  <!-- <div> -->
+    <!-- <h1 class="title">Game Page</h1>
   </div>
-  <img src="../assets/logo.png" @click="clickCounter" />
+  <img src="../assets/logo.png" @click="clickCounter" /> -->
   <p>Punches: {{ clicksProp }}</p>
 </template>
 
@@ -14,7 +14,6 @@ import { supabase } from "../clients/supabase";
         props: {
           clicksProp: Number
         }
-      
   }
 </script>
 
