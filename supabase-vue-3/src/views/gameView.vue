@@ -7,10 +7,10 @@
         <img src="../assets/logo.png" alt="punch">-->
         <br>
 <img class ="punchIcon" src="../assets/punch.png" alt="punch"> </div>
-<gameComp />
+<gameComp :clicksProp = 'clicks' />
 </template>
 
-<script setup lang="ts">
+<script>
 import { supabase } from '../clients/supabase';
 import gameComp from '../components/gameComp.vue'
 import { ref } from "vue";
@@ -23,22 +23,42 @@ async function getSession(){
 getSession();
 
 
-const fetchProfiles = async () => {
-  try {
-      let { data: profiles, error } = await supabase
-      .from('profiles')
-      .select('*')
+export default {
+  name: 'GameView',
+  components: { gameComp },
+    data(){
+        return {
+            loaded: false,
+            clicks: [],
+        };
+    },
+    mounted: function(){
+        this.fetchData();
+    },
+    methods: {
+        fetchData: async function(){
+         this.loaded = false
 
-      if (profiles) {
-        console.log(profiles)
-      }
-
-  } catch (error){
-      console.log(error)
-  } 
+            try{
+                const results = await supabase
+                .from("profiles")
+                .select("clicks")
+                .eq("id", account.id)
+                .limit(1)
+                .single()
+                
+                // const data = await results.json();
+                this.clicks = results;          
+                
+                console.log({results});
+                this.loaded=true
+            } catch(error){
+                console.log(error);
+            }
+        }
+    }
 }
 
-fetchProfiles();
 
 const items = [
 {name: 'bob',
