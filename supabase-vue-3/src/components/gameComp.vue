@@ -8,7 +8,8 @@
 
 <script setup lang="ts">
 import { onBeforeMount, onMounted, ref, toRefs, watchEffect } from 'vue'
-import { supabase } from "../supabase"
+// import { supabase } from "../supabase"
+import { supabase } from '../clients/supabase';
 
 const props = defineProps(['session']);
 const { session } = toRefs(props);
