@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, toRefs, watchEffect } from 'vue'
+import { onBeforeMount, onMounted, ref, toRefs, watchEffect } from 'vue'
 import { supabase } from "../supabase"
 
 const props = defineProps(['session']);
@@ -38,7 +38,6 @@ watchEffect (() => {
   };
   clickValue();
 } );
-
 
 // async function getProfile() {
 //   try {
