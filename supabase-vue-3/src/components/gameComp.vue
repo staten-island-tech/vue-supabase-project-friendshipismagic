@@ -3,16 +3,19 @@
     <h1 class="title">Game Page</h1>
   </div>
   <img src="../assets/logo.png" @click="clickCounter" />
-  <p>Punches: {{ count }}</p>
+  <p>Punches: {{ clicksProp }}</p>
 </template>
 
-<script setup lang="ts">
+<script>
 import { ref, computed } from 'vue'
 import { supabase } from "../clients/supabase";
 
-
-
-
+ export default {
+        props: {
+          clicksProp: Number
+        }
+      
+  }
 </script>
 
 <style scoped>
