@@ -14,12 +14,15 @@
 import { supabase } from '../clients/supabase';
 import gameComp from '../components/gameComp.vue'
 import { ref } from "vue";
+
 const account = ref();
-getSession();
 
 async function getSession(){
     account.value = await supabase.auth.getSession();
 }
+getSession();
+
+
 export default {
   name: 'GameView',
   components: { gameComp },
@@ -55,6 +58,8 @@ export default {
         }
     }
 }
+
+
 const items = [
 {name: 'bob',
 price: 500,
