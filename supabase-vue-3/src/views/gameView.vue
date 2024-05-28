@@ -1,7 +1,7 @@
 <template>
  <h1 class="title">Game Page</h1>
 <div class="clicktoPunch">
-  <img src="../assets/logo.png" @click= "updateClicks" />
+  <img src="../assets/logo.png" @click="updateClicks" />
         <!-- <img src="../assets/henriques.png" alt="punch">
         <img src="../assets/colangelo.png" alt="punch">
         <img src="../assets/logo.png" alt="punch">-->
@@ -17,28 +17,22 @@ import { ref } from "vue";
 const clickCount = ref(0)
 
 
-
-const user = await supabase.auth.getSession();
-        console.log(user);
-
-
-const updateClicks = async () => {
-  // clickCount.value++
+async function updateClicks(){
+  const user = await supabase.auth.getUser(); 
+  clickCount.value++
   try {
     const { data, error } = await supabase
     .from('profiles')
-    .update({ clicks: +10 })
-    .eq('id', user.id)
+    .update({ clicks: clickCount.value })
+    .eq('id', user.data.user.id)
     .select()
-
       if(data){
         console.log(data)
       }
   } catch (error) {
-    console.log(poop)
+    console.log(error)
   }
 }
-updateClicks(); 
 
 const items = [
 {name: 'bob',
