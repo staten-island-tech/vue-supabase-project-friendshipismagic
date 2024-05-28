@@ -16,7 +16,6 @@ import gameComp from '../components/gameComp.vue'
 import { ref } from "vue";
 const clickCount = ref(0)
 
-
 async function updateClicks(){
   const user = await supabase.auth.getUser(); 
   clickCount.value++
