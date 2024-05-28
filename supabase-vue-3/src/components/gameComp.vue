@@ -19,4 +19,7 @@ import { supabase } from "../clients/supabase";
 .title{
     text-decoration: underline;
 }
-</style>
+.cursor input {
+  cursor: url(../assets/punch.png);
+}
+  </style>
