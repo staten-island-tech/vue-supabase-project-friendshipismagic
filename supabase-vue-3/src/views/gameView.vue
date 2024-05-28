@@ -23,11 +23,11 @@ const user = await supabase.auth.getSession();
 
 
 const updateClicks = async () => {
-  clickCount.value++
+  // clickCount.value++
   try {
     const { data, error } = await supabase
     .from('profiles')
-    .update({ clicks: 10 })
+    .update({ clicks: +10 })
     .eq('id', user.id)
     .select()
 
@@ -38,6 +38,7 @@ const updateClicks = async () => {
     console.log(poop)
   }
 }
+updateClicks(); 
 
 const items = [
 {name: 'bob',
