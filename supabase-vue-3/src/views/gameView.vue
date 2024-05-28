@@ -10,7 +10,7 @@
 <gameComp />
 </template>
 
-<script>
+<script setup lang="ts">
 import { supabase } from '../clients/supabase';
 import gameComp from '../components/gameComp.vue'
 import { ref } from "vue";
