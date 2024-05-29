@@ -9,6 +9,8 @@
 <script setup lang="ts">
 import { supabase } from '../clients/supabase';
 import { ref } from "vue";
+import { defineStore } from 'pinia'
+
 let clickCount = ref(0)
 
 async function updateClicks(){
