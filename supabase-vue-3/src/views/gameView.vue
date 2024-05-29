@@ -17,13 +17,13 @@ import { ref } from "vue";
 const clickCount = ref(0)
 
 async function updateClicks(){
-  const user = await supabase.auth.getUser(); 
+  const usser = await supabase.auth.getSession();
   clickCount.value++
   try {
     const { data, error } = await supabase
     .from('profiles')
     .update({ clicks: clickCount.value })
-    .eq('id', user.data.user.id)
+    .eq('id', usser.data.session.user.id)
     .select()
       if(data){
         console.log(data)
