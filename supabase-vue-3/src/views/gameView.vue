@@ -9,6 +9,9 @@
         <img src="../assets/logo.png" alt="punch">
         <img src="../assets/punch.png" alt="punch">
         
+        <button class="henriquesbutt" type="submit">
+            <img src="../assets/henriques.png"/>
+        </button>
 
 </div>
 <GameComp />

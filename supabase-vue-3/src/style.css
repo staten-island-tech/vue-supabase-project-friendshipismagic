@@ -73,3 +73,8 @@ button:focus-visible {
 .cursor input {
   cursor: url(./assets/punch.png);
 }
+
+/* .henriquesbutt {
+  all: unset;
+  cursor: pointer;
+} */
