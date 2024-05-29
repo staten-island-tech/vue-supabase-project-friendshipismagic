@@ -3,10 +3,9 @@
         <h1 class="title">Account Information</h1>
         <div class="accountInfoContainer">
         <p id="account"> 
-
-            E-mail: {{ account.data.session.user.email}} <br>
-            User Name: {{ account.data.session.user.user_metadata.user_name}} <br>
-            Created At: {{ account.data.session.user.created_at }}
+            E-mail: {{ account.data.user.email}} <br> 
+            User Name: {{ account.data.user.user_metadata.user_name}} <br>
+            Created At: {{ account.data.user.created_at }}
         </p>
         </div>
     </div>
@@ -17,12 +16,12 @@ import { supabase } from '../clients/supabase';
 import { ref } from "vue";
 
 const account = ref();
-getSession();
 
-async function getSession(){
-    account.value = await supabase.auth.getSession();
+async function getUser(){
+    account.value = await supabase.auth.getUser();
 }
 
+getUser();
 
 </script>
 

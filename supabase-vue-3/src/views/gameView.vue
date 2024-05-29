@@ -14,24 +14,40 @@
 import { supabase } from '../clients/supabase';
 import gameComp from '../components/gameComp.vue'
 import { ref } from "vue";
-const clickCount = ref(0)
+let clickCount = ref(0)
+
+// async function updateClicks(){
+//   const user = await supabase.auth.getSession();
+//   clickCount.value++
+//   try {
+//     const { data, error } = await supabase
+//     .from('profiles')
+//     .update({ clicks: clickCount.value })
+//     .eq('id', user.data.session.user.id)
+//     .select()
+//       if(data){
+//         console.log(data)
+//       }
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
 
 async function updateClicks(){
-  const usser = await supabase.auth.getSession();
+  const user = await supabase.auth.getSession();
   clickCount.value++
-  try {
     const { data, error } = await supabase
     .from('profiles')
-    .update({ clicks: clickCount.value })
-    .eq('id', usser.data.session.user.id)
+    .upsert({ clicks: clickCount.value })
+    .eq('id', user.data.session.user.id)
     .select()
-      if(data){
-        console.log(data)
-      }
-  } catch (error) {
-    console.log(error)
-  }
+      console.log(data);
+    // clicked(data.clicks);
 }
+
+// function clicked(){
+//   clickCount.value++
+// }
 
 const items = [
 {name: 'bob',
