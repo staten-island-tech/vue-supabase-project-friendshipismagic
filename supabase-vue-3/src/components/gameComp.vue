@@ -9,7 +9,9 @@
 <script setup lang="ts">
 import { supabase } from '../clients/supabase';
 import { ref } from "vue";
+import { useCounterStore } from '../stores/store'
 let clickCount = ref(0)
+const { increaseClicks } = store
 
 async function updateClicks(){
   const user = await supabase.auth.getSession();
@@ -23,11 +25,11 @@ async function updateClicks(){
       console.log(data);
 }
 
-async function increaseClicks(){
-  const { data } = await supabase.rpc('increaseClicksby1')
-  console.log(data)
-  clickCount = data
-}
+// async function increaseClicks(){
+//   const { data } = await supabase.rpc('increaseClicksby1')
+//   console.log(data)
+//   clickCount = data
+// }
 
 </script>
 
