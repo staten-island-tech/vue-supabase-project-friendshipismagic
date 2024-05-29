@@ -1,4 +1,5 @@
 <template>
+        
 <div>
         <h1 class="title">Game Page</h1>
   <img src="../assets/logo.png" @click="clickCounter" />
@@ -53,7 +54,11 @@ img: "../assets/student1.png"
 </script>
 
 <style scoped>
-.container{
-        cursor: url(""), auto;
-}
+  /* <v-app
+    :style="{
+      cursor:
+        'url(' + require('@/assets/images/custom_cursor.png') + ')'
+    }"
+  > */
+
 </style>

@@ -63,7 +63,4 @@ table.table {
     border-collapse: collapse;
 }
 
-cursor{
-  cursor:  url("../assets/punch.png")
-}
 </style>
