@@ -1,12 +1,6 @@
 <template>
  <h1 class="title">Game Page</h1>
-<div class="clicktoPunch">
-  <img src="../assets/logo.png" @click="updateClicks" />
-        <!-- <img src="../assets/henriques.png" alt="punch">
-        <img src="../assets/colangelo.png" alt="punch">
-        <img src="../assets/logo.png" alt="punch">-->
-        <br>
-<img class ="punchIcon" src="../assets/punch.png" alt="punch"> </div>
+
 <gameComp />
 </template>
 
@@ -33,17 +27,16 @@ let clickCount = ref(0)
 //   }
 // }
 
-async function updateClicks(){
-  const user = await supabase.auth.getSession();
-  clickCount.value++
-    const { data, error } = await supabase
-    .from('profiles')
-    .upsert({ clicks: clickCount.value })
-    .eq('id', user.data.session.user.id)
-    .select()
-      console.log(data);
-    // clicked(data.clicks);
-}
+// async function updateClicks(){
+//   const user = await supabase.auth.getSession();
+//   clickCount.value++
+//     const { data, error } = await supabase
+//     .from('profiles')
+//     .upsert({ clicks: clickCount.value })
+//     .eq('id', user.data.session.user.id)
+//     .select()
+//       console.log(data);
+// }
 
 // function clicked(){
 //   clickCount.value++
