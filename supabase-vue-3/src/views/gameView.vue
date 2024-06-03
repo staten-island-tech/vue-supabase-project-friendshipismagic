@@ -1,7 +1,17 @@
 <template>
  <h1 class="title">Game Page</h1>
 
-<gameComp />
+        <img src="../assets/henriques.png" alt="punch">
+        <img src="../assets/colangelo.png" alt="punch">
+        <img src="../assets/logo.png" alt="punch">
+        <img src="../assets/punch.png" alt="punch">
+        
+        <button class="henriquesbutt" type="submit">
+            <img src="../assets/henriques.png"/>
+        </button>
+
+</div>
+<GameComp />
 </template>
 
 <script setup lang="ts">
