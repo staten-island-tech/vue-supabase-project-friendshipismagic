@@ -10,8 +10,7 @@
             <img src="../assets/henriques.png"/>
         </button>
 
-</div>
-<GameComp />
+<GameComp/>
 </template>
 
 <script setup lang="ts">
