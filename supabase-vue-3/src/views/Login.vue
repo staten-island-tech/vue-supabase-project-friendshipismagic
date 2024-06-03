@@ -48,7 +48,7 @@ async function createAccount(){
         console.log(error)
     }
     else {
-        alert("Account created! Please check your e-mail to verify your e-mail.")
+        alert("Account created!")
     }
 }
 
