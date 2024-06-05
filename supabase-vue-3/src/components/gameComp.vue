@@ -2,34 +2,39 @@
  <div class="clicktoPunch">
   <img src="../assets/logo.png" @click="updateClicks" />
         <br>
-<img class ="punchIcon" src="../assets/punch.png" alt="punch"> </div>
-  <p>Punches: ${clickCount}</p>
+<img class ="punchIcon" src="../assets/punch.png" alt="punch" @click="increment"> </div>
+  <p>Punches: {{count}}</p>
 </template>
 
 <script setup lang="ts">
 import { supabase } from '../clients/supabase';
 import { ref } from "vue";
-import { defineStore } from 'pinia'
+import { defineStore, storeToRefs } from 'pinia'
+import {useCounterStore} from '../components/clickerMeow.vue'
 
-let clickCount = ref(0)
+const counterStore = useCounterStore();
+const {increment} = counterStore
+const {count} = storeToRefs(counterStore)
 
-async function updateClicks(){
-  const user = await supabase.auth.getSession();
-  increaseClicks();
-    const { data, error } = await supabase
-    .from('profiles')
-    // .update({ clicks: clickCount.value })
-    .select('clicks')
-    .eq('id', user.data.session.user.id)
-    .select()
-      console.log(data);
-}
+// let clickCount = ref(0)
 
-async function increaseClicks(){
-  const { data } = await supabase.rpc('increaseClicksby1')
-  console.log(data)
-  clickCount = data
-}
+// async function updateClicks(){
+//   const user = await supabase.auth.getSession();
+//   increaseClicks();
+//     const { data, error } = await supabase
+//     .from('profiles')
+//     // .update({ clicks: clickCount.value })
+//     .select('clicks')
+//     .eq('id', user.data.session.user.id)
+//     .select()
+//       console.log(data);
+// }
+
+// async function increaseClicks(){
+//   const { data } = await supabase.rpc('increaseClicksby1')
+//   console.log(data)
+//   clickCount = data
+// }
 
 </script>
 
