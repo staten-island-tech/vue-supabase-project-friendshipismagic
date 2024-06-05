@@ -3,15 +3,15 @@
   <img src="../assets/logo.png" @click="updateClicks" />
         <br>
 <img class ="punchIcon" src="../assets/punch.png" alt="punch"> </div>
-  <p>Punches: ${clickCount}</p>
+  <p>Punches: {{clickCount.value}}</p>
 </template>
 
 <script setup lang="ts">
 import { supabase } from '../clients/supabase';
 import { ref } from "vue";
-import { useCounterStore } from '../stores/store'
+// import { useCounterStore } from '../stores/store'
 let clickCount = ref(0)
-const { increaseClicks } = store
+// const { increaseClicks } = store
 
 async function updateClicks(){
   const user = await supabase.auth.getSession();
@@ -22,14 +22,13 @@ async function updateClicks(){
     .select('clicks')
     .eq('id', user.data.session.user.id)
     .select()
-      console.log(data);
 }
 
-// async function increaseClicks(){
-//   const { data } = await supabase.rpc('increaseClicksby1')
-//   console.log(data)
-//   clickCount = data
-// }
+async function increaseClicks(){
+  const { data } = await supabase.rpc('increaseClicksby1')
+  console.log(data)
+  clickCount = data
+}
 
 </script>
 
