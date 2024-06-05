@@ -4,7 +4,7 @@ import LoginView from '../views/Login.vue'
 import GameView from '../views/gameView.vue'
 import LeaderBoard from '../views/leaderboardView.vue'
 import { supabase } from '../clients/supabase'
-
+import { useAuthStore } from "../stores/auth-store"
 let localUser
 
 const router = createRouter({
@@ -49,12 +49,22 @@ async function getUser(next){
     }
 }
 
+// router.beforeEach((to, from, next) => {
+//     if (to.meta.requiresAuth){
+//         getUser(next);
+//     } else {
+//         next();
+//     }
+// })
+
 router.beforeEach((to, from, next) => {
-    if (to.meta.requiresAuth){
-        getUser(next);
-    } else {
-        next();
-    }
+   if (useAuthStore()?.isLoggedIn && to.meta.requiresAuth) {
+    getUser(next);
+   } else {
+    next();
+   }
+
+   
 })
 
 export default router
