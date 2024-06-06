@@ -29,8 +29,10 @@
 import { ref } from "vue";
 import { supabase } from "../clients/supabase";
 import { useAuthStore } from "../stores/authStore"; 
+import { useLoginStore } from "../stores/authStore"; 
 
 const authStore = useAuthStore();
+const loginStore = useLoginStore();
 
 let email = ref("");
 let password = ref("");
@@ -74,8 +76,13 @@ async function createAccount(){
     try {
         console.log(email.value, password.value, username.value)
         const {data, error} = await authStore.createAccount({email: email.value, password: password.value, username: username.value});
-        if(error) throw error;
-        console.log(data.user.email)
+        if(error) {
+            alert(error.message)
+        } else { 
+            alert("Account created!")
+            console.log(data.user.email)
+            loginStore.loggedIn();
+        }
     } catch (error) {
         alert(error.message)
     }
@@ -85,8 +92,13 @@ async function login(){
     try {
         console.log(email.value, password.value)
         const {data, error} = await authStore.login({email: email.value, password: password.value});
-        if(error) throw error;
-        console.log(data.user.email)
+        if(error) {
+            console.log(error)
+        } else { 
+            alert("Login was a success!")
+            console.log(data.user.email)
+            loginStore.loggedIn();
+        }
     } catch (error) {
         alert(error.message)
     }
@@ -99,6 +111,7 @@ async function logout(){
     }
     else {
         alert("Logout was a success!")
+        loginStore.loggedOut();
     }
 }
 </script>
