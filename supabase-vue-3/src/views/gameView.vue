@@ -1,7 +1,8 @@
 <template>
+<div>
  <h1 class="title">Game Page</h1>
 
-<gameComp />
+<gameComp /></div>
 </template>
 
 <script setup>
@@ -47,35 +48,6 @@ let clickCount = ref(0)
 <style scoped>
 .clicktoPunch{
     margin: 0%;
-}
-.clicktoPunch:active{
-    
-  animation: shake 0.1s linear 1;
-}
-/* img:hover{
-    animation: shake 0.2s linear 1;
-} */
-
-
-@keyframes shake {
-  0% {
-    rotate: 0deg;
-  }
-
-  33% {
-    rotate: 10deg;
-    scale: 110%;
-  }
-
-  66% {
-    rotate: -10deg;
-    scale: 120%;
-  }
-
-  100% {
-    rotate: 10deg;
-    scale: 110%;
-  }
 }
 
 </style>

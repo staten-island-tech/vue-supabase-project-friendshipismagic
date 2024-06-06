@@ -1,8 +1,10 @@
 <template>
+<div class="page">
  <div class="clicktoPunch">
   <img src="../assets/logo.png" @click="increaseClicks" />
         <br>
 <img class ="punchIcon" src="../assets/punch.png" alt="punch"> 
+</div>
   <p>Punches: </p>
   
   </div>
@@ -43,26 +45,12 @@ async function increaseClicks(){
     margin: 0%;
 }
 .clicktoPunch:active{
-  animation: shake 0.1s linear 1;
+    animation: wobble 0.1s ease infinite;
 }
-@keyframes shake {
-  0% {
-    rotate: 0deg;
-  }
-
-  33% {
-    rotate: 10deg;
-    scale: 110%;
-  }
-
-  66% {
-    rotate: -10deg;
-    scale: 120%;
-  }
-
-  100% {
-    rotate: 10deg;
-    scale: 110%;
-  }
+@keyframes wobble {
+  0% { transform: translateX(0%); }
+  45% { transform: translateX(-1%) rotate(-3deg); } 
+  60% { transform: translateX(1%) rotate(2deg); }
+  100% { transform: translateX(0%); }
 }
 </style>

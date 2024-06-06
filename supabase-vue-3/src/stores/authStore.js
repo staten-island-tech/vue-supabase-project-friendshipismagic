@@ -11,11 +11,11 @@ export const useLoginStore = defineStore("loginStore", {
 
     actions: {
         loggedIn(){
-            this.login = 1
+            this.login === 1
             console.log('log in 1')
         },
         loggedOut(){
-            this.login = 0
+            this.login === 0
             console.log('log out 0')
         }
     }
@@ -58,5 +58,5 @@ export const useAuthStore = defineStore("authStore", () => {
     });
 };
 
-    return {login, createAccount, session, user, loggedIn, loggedOut}
+    return {login, createAccount, session, user}
 });
