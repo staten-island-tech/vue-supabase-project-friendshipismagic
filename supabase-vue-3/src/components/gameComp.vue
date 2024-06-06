@@ -5,34 +5,20 @@
         <br>
 <img class ="punchIcon" src="../assets/punch.png" alt="punch"> 
 </div>
-  <p>Punches: </p>
-  
+   <p>Punches: {{store.punches}} </p>
   </div>
 </template>
 
 <script setup >
 import { supabase } from '../clients/supabase';
 import { ref } from "vue";
-// import { useAuthStore } from '../stores/authStore'
-let clickCount = ref(0)
-// const { increaseClicks } = store
-// const authStore = useAuthStore();
+import { useClicksStore } from "../stores/authStore";
 
-// async function updateClicks(){
-//   const user = await supabase.auth.getSession();
-//   increaseClicks();
-//     const { data, error } = await supabase
-//     .from('profiles')
-//     .select('clicks')
-//     .eq('id', user.data.session.user.id)
-//     .select()
-//       // console.log(data);
-// }
+const store = useClicksStore();
 
 async function increaseClicks(){
-  const { data } = await supabase.rpc('increaseClicksby1')
+  const { data } = await supabase.rpc('increaseClicksby1') //calls the function that I made in supa to update the mathcing row 
   console.log(data)
-  clickCount = data
 } //updates the table in supabase everytime you click
 
 </script>

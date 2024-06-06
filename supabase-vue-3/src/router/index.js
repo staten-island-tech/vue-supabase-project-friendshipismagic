@@ -57,7 +57,8 @@ export const router = createRouter({
 // })
 
 router.beforeEach((to, from, next) => {
-    if (useLoginStore.login === 0 && to.meta.requiresAuth) {
+    const store = useLoginStore();
+    if (store.login = 0 && to.meta.requiresAuth) {
         alert('Please log in')
     } else {
         next();
