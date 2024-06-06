@@ -9,10 +9,10 @@ export const useAuthStore = defineStore("authStore", () => {
     const loggedIn = ref(false);
 
     const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_ANON_KEY)
-    console.log(supabase);
+    // console.log(supabase);
 
     const { data } = supabase.auth.onAuthStateChange((event, session) => {
-        console.log(event, session)
+        // console.log(event, session)
         if(session){
             user.value = session.user;
         } else {
