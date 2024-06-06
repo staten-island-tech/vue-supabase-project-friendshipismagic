@@ -13,16 +13,18 @@ export const useAuthStore = defineStore("authStore", () => {
 
     const { data } = supabase.auth.onAuthStateChange((event, session) => {
         // console.log(event, session)
-        if(session){
-            user.value = session.user;
-        } else {
-            session.user = null
-        }
-        if(loggedIn.value = user.value){
-            const loggedIn = ref(true)
-        } else {
-            const loggedIn = ref(false)
-        }
+        // if(session){
+        //     user.value = session.user;
+        // } else {
+        //     session.user = null
+        // }
+        // if(loggedIn.value = user.value){
+        //     const loggedIn = ref(true)
+        // } else {
+        //     const loggedIn = ref(false)
+        // }
+        user.value = session ? session.user : null;
+        loggedIn.value = user.value ? true : false;
     });
 
     async function login ({email, password}) {

@@ -3,7 +3,6 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/Login.vue'
 import GameView from '../views/gameView.vue'
 import LeaderBoard from '../views/leaderboardView.vue'
-import Invalid from '../views/invalidView.vue'
 import { supabase } from '../clients/supabase'
 import { useAuthStore } from '../stores/authStore'
 
@@ -39,11 +38,6 @@ export const router = createRouter({
         name: 'laderboard',
         component: LeaderBoard,
     },
-    {
-        path: '/invalid',
-        name: 'invalid',
-        component: Invalid,
-    },
   ]
 })
 
@@ -66,7 +60,7 @@ export const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     if (!useAuthStore()?.loggedIn && to.meta.requiresAuth) {
-        router.replace('/invalid')
+        router.replace('/login')
     } else {
         next();
     }

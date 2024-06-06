@@ -44,22 +44,16 @@
 
 <script setup lang="ts">
 import { supabase } from '../clients/supabase';
-async function order(){
-  // const user = await supabase.auth.getSession();
-  // increaseClicks();
-  //   const { data, error } = await supabase
-  //   .from('profiles')
-  //   .select('clicks')
-  //   .eq('id', user.data.session.user.id)
-  //   .select()
-  //     // console.log(data);
-  
+
+
+async function order(){  
 const { data, error } = await supabase
   .from('profiles')
   .select('id', 'clicks')
   .order('clicks', { ascending: false })
   console.log(data)
 }
+
 order();
 </script>
 

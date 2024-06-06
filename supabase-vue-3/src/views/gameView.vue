@@ -42,38 +42,6 @@ let clickCount = ref(0)
 //   clickCount.value++
 // }
 
-const items = [
-{name: 'bob',
-price: 500,
-img: "../assets/student1.png"
-},
-
-{name: 'bob',
-price: 500,
-img: "../assets/student1.png"
-},
-
-{name: 'bob',
-price: 500,
-img: "../assets/student1.png"
-},
-
-{name: 'bob',
-price: 500,
-img: "../assets/student1.png"
-},
-
-{name: 'bob',
-price: 600,
-img: "../assets/student1.png"
-},
-
-{name: 'bob',
-price: 1000,
-img: "../assets/student1.png"
-}
-]
-
 </script>
 
 <style scoped>
