@@ -7,22 +7,12 @@ export const useAuthStore = defineStore("authStore", () => {
     const user = ref(null);
     const session = ref(null);
     const loggedIn = ref(false);
+    const clickValue = ref(0)
 
     const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_ANON_KEY)
     // console.log(supabase);
 
     const { data } = supabase.auth.onAuthStateChange((event, session) => {
-        // console.log(event, session)
-        // if(session){
-        //     user.value = session.user;
-        // } else {
-        //     session.user = null
-        // }
-        // if(loggedIn.value = user.value){
-        //     const loggedIn = ref(true)
-        // } else {
-        //     const loggedIn = ref(false)
-        // }
         user.value = session ? session.user : null;
         loggedIn.value = user.value ? true : false;
     });
@@ -41,5 +31,15 @@ export const useAuthStore = defineStore("authStore", () => {
             username
     });
 };
-    return {login, createAccount, session, user, loggedIn}
+
+    async function fetchClicks(){
+            const user = await supabase.auth.getUser();
+            const { data, error } = await supabase
+            .from('profiles')
+            .select('clicks')
+            .eq('id', user.data.session.user.id)
+            .select()
+            this.clickValue = data[0].clicks
+    }
+    return {login, createAccount, session, user, loggedIn, clickValue, fetchClicks}
 });

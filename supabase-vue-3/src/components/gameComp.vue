@@ -1,36 +1,37 @@
 <template>
  <div class="clicktoPunch">
-  <img src="../assets/logo.png" @click="updateClicks" />
+  <img src="../assets/logo.png" @click="increaseClicks" />
         <br>
 <img class ="punchIcon" src="../assets/punch.png" alt="punch"> 
-  <p>Punches: ${clickCount}</p>
+  <p>Punches: </p>
   
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup >
 import { supabase } from '../clients/supabase';
 import { ref } from "vue";
-// import { useCounterStore } from '../stores/store'
+// import { useAuthStore } from '../stores/authStore'
 let clickCount = ref(0)
 // const { increaseClicks } = store
+// const authStore = useAuthStore();
 
-async function updateClicks(){
-  const user = await supabase.auth.getSession();
-  increaseClicks();
-    const { data, error } = await supabase
-    .from('profiles')
-    .select('clicks')
-    .eq('id', user.data.session.user.id)
-    .select()
-      // console.log(data);
-}
+// async function updateClicks(){
+//   const user = await supabase.auth.getSession();
+//   increaseClicks();
+//     const { data, error } = await supabase
+//     .from('profiles')
+//     .select('clicks')
+//     .eq('id', user.data.session.user.id)
+//     .select()
+//       // console.log(data);
+// }
 
 async function increaseClicks(){
   const { data } = await supabase.rpc('increaseClicksby1')
   console.log(data)
   clickCount = data
-}
+} //updates the table in supabase everytime you click
 
 </script>
 
