@@ -28,6 +28,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { supabase } from "../clients/supabase";
+import { useAuthStore } from "../stores/authStore"; 
+
+const authStore = useAuthStore();
 
 let email = ref("");
 let password = ref("");
@@ -52,21 +55,32 @@ async function createAccount(){
     }
 }
 
+// async function login(){
+//     const { data, error } = await supabase.auth.signInWithPassword({
+//         email: email.value,
+//         password: password.value
+//     })
+//     await authStore.login({email, password});
+//     if (error) {
+//         console.log(error)
+//     }
+//     else {
+//         alert("Login was a success!")
+//         const localUser = await supabase.auth.getSession();
+//         console.log(localUser);
+//     }
+// }
+
 async function login(){
-    const { data, error } = await supabase.auth.signInWithPassword({
-        email: email.value,
-        password: password.value
-    })
-    if (error) {
-        console.log(error)
-    }
-    else {
-        alert("Login was a success!")
-        const localUser = await supabase.auth.getSession();
-        console.log(localUser);
+    try {
+        console.log(email.value, password.value)
+        const {data, error} = await authStore.login({email: email.value, password: password.value});
+        if(error) throw error;
+        console.log(data.user.email)
+    } catch (error) {
+        alert(error.message)
     }
 }
-
 
 async function logout(){
     const { error } = await supabase.auth.signOut();

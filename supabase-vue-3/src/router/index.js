@@ -7,7 +7,7 @@ import { supabase } from '../clients/supabase'
 
 let localUser
 
-const router = createRouter({
+export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
