@@ -36,24 +36,24 @@ let email = ref("");
 let password = ref("");
 let username = ref("");
 
-async function createAccount(){
-    const { data, error } = await supabase.auth.signUp({
-        email: email.value,
-        password: password.value,
-        options: {
-            data: {
-                user_name: username.value,
-                // clicks: ref(0)
-            }
-        } 
-    })
-    if (error) {
-        console.log(error)
-    }
-    else {
-        alert("Account created!")
-    }
-}
+// async function createAccount(){
+//     const { data, error } = await supabase.auth.signUp({
+//         email: email.value,
+//         password: password.value,
+//         options: {
+//             data: {
+//                 user_name: username.value,
+//                 // clicks: ref(0)
+//             }
+//         } 
+//     })
+//     if (error) {
+//         console.log(error)
+//     }
+//     else {
+//         alert("Account created!")
+//     }
+// }
 
 // async function login(){
 //     const { data, error } = await supabase.auth.signInWithPassword({
@@ -70,6 +70,16 @@ async function createAccount(){
 //         console.log(localUser);
 //     }
 // }
+async function createAccount(){
+    try {
+        console.log(email.value, password.value, username.value)
+        const {data, error} = await authStore.createAccount({email: email.value, password: password.value, username: username.value});
+        if(error) throw error;
+        console.log(data.user.email)
+    } catch (error) {
+        alert(error.message)
+    }
+}
 
 async function login(){
     try {

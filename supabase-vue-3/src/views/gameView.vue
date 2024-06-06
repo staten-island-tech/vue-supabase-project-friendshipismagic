@@ -4,7 +4,7 @@
 <gameComp />
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { supabase } from '../clients/supabase';
 import gameComp from '../components/gameComp.vue'
 import { ref } from "vue";

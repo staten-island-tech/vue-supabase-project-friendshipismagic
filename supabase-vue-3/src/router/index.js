@@ -3,7 +3,9 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/Login.vue'
 import GameView from '../views/gameView.vue'
 import LeaderBoard from '../views/leaderboardView.vue'
+import Invalid from '../views/invalidView.vue'
 import { supabase } from '../clients/supabase'
+import { useAuthStore } from '../stores/authStore'
 
 let localUser
 
@@ -37,21 +39,34 @@ export const router = createRouter({
         name: 'laderboard',
         component: LeaderBoard,
     },
+    {
+        path: '/invalid',
+        name: 'invalid',
+        component: Invalid,
+    },
   ]
 })
 
-async function getUser(next){
-    localUser = await supabase.auth.getSession();
-    if(localUser.data.session === null){
-        alert("Please log in first.")
-    } else{
-        next();
-    }
-}
+// async function getUser(next){
+//     localUser = await supabase.auth.getSession();
+//     if(localUser.data.session === null){
+//         alert("Please log in first.")
+//     } else{
+//         next();
+//     }
+// }
+
+// router.beforeEach((to, from, next) => {
+//     if (to.meta.requiresAuth){
+//         getUser(next);
+//     } else {
+//         next();
+//     }
+// })
 
 router.beforeEach((to, from, next) => {
-    if (to.meta.requiresAuth){
-        getUser(next);
+    if (!useAuthStore()?.loggedIn && to.meta.requiresAuth) {
+        router.replace('/invalid')
     } else {
         next();
     }
