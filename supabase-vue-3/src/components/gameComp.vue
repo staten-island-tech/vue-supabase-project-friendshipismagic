@@ -14,7 +14,8 @@ import { supabase } from '../clients/supabase';
 import { ref } from "vue";
 import { useClicksStore } from "../stores/authStore";
 
-const store = useClicksStore();
+const store = useClicksStore(); 
+
 
 async function increaseClicks(){
   const { data } = await supabase.rpc('increaseClicksby1') //calls the function that I made in supa to update the mathcing row 
