@@ -55,6 +55,7 @@ export const router = createRouter({
 //         next();
 //     }
 // })
+//the functions above work in preventing users that are not logged in from accessing pages, but they don't use pinia
 
 router.beforeEach((to, from, next) => {
     const store = useLoginStore();
