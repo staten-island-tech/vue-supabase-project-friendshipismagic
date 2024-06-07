@@ -43,7 +43,18 @@
 </template>
 
 <script setup lang="ts">
+import { supabase } from '../clients/supabase';
 
+
+async function order(){  
+const { data, error } = await supabase
+  .from('profiles')
+  .select('id', 'clicks')
+  .order('clicks', { ascending: false })
+  console.log(data)
+}
+
+order();
 </script>
 
 <style scoped>

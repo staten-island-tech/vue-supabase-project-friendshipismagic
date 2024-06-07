@@ -1,57 +1,53 @@
 <template>
 <div>
-        <h1 class="title">Game Page</h1>
-  <img src="../assets/logo.png" @click="clickCounter" />
-  <p>Punches: {{ count }}</p>
+ <h1 class="title">Game Page</h1>
 
-        <img src="../assets/henriques.png" alt="punch">
-        <img src="../assets/colangelo.png" alt="punch">
-        <img src="../assets/logo.png" alt="punch">
-        <img src="../assets/punch.png" alt="punch">
-        
-        <button class="henriquesbutt" type="submit">
-            <img src="../assets/henriques.png"/>
-        </button>
-
-</div>
-<GameComp />
+<gameComp /></div>
 </template>
 
-<script setup lang="ts">
-const items = [
-{name: 'bob',
-price: 500,
-img: "../assets/student1.png"
-},
+<script setup>
+import { supabase } from '../clients/supabase';
+import gameComp from '../components/gameComp.vue'
+import { ref } from "vue";
+let clickCount = ref(0)
 
-{name: 'bob',
-price: 500,
-img: "../assets/student1.png"
-},
+// async function updateClicks(){
+//   const user = await supabase.auth.getSession();
+//   clickCount.value++
+//   try {
+//     const { data, error } = await supabase
+//     .from('profiles')
+//     .update({ clicks: clickCount.value })
+//     .eq('id', user.data.session.user.id)
+//     .select()
+//       if(data){
+//         console.log(data)
+//       }
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
 
-{name: 'bob',
-price: 500,
-img: "../assets/student1.png"
-},
+// async function updateClicks(){
+//   const user = await supabase.auth.getSession();
+//   clickCount.value++
+//     const { data, error } = await supabase
+//     .from('profiles')
+//     .upsert({ clicks: clickCount.value })
+//     .eq('id', user.data.session.user.id)
+//     .select()
+//       console.log(data);
+// }
 
-{name: 'bob',
-price: 500,
-img: "../assets/student1.png"
-},
-
-{name: 'bob',
-price: 600,
-img: "../assets/student1.png"
-},
-
-{name: 'bob',
-price: 1000,
-img: "../assets/student1.png"
-}
-]
+// function clicked(){
+//   clickCount.value++
+// }
 
 </script>
 
 <style scoped>
+.clicktoPunch{
+    margin: 0%;
+}
 
 </style>

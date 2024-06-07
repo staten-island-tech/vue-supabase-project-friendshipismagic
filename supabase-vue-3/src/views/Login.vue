@@ -28,6 +28,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { supabase } from "../clients/supabase";
+// import { useAuthStore } from "../stores/authStore"; 
+import { useLoginStore } from "../stores/authStore"; 
+
+// const authStore = useAuthStore();
+const loginStore = useLoginStore();
 
 let email = ref("");
 let password = ref("");
@@ -39,15 +44,17 @@ async function createAccount(){
         password: password.value,
         options: {
             data: {
-                user_name: username.value
+                user_name: username.value,
             }
         } 
     })
     if (error) {
         console.log(error)
+        alert(error.message)
     }
     else {
-        alert("Account created! Please check your e-mail to verify your e-mail.")
+        alert("Account created!")
+        loginStore.loggedIn();
     }
 }
 
@@ -56,24 +63,28 @@ async function login(){
         email: email.value,
         password: password.value
     })
+
     if (error) {
         console.log(error)
+        alert(error.message)
     }
     else {
         alert("Login was a success!")
         const localUser = await supabase.auth.getSession();
         console.log(localUser);
+        loginStore.loggedIn();
     }
 }
-
 
 async function logout(){
     const { error } = await supabase.auth.signOut();
     if (error) {
         console.log(error)
+        alert(error.message)
     }
     else {
         alert("Logout was a success!")
+        loginStore.loggedOut();
     }
 }
 </script>
