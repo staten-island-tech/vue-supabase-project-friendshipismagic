@@ -39,6 +39,6 @@ export const useClicksStore = defineStore("clickStore", {
                   console.log(data);
                   this.punches = profiles[0].clicks;
               }
-    } //this is supposed to be for updating the punches variable in the state to be up to date with how many clicks the current user has
+    } //this is supposed to be for updating the punches variable in the state to be up to date with how many clicks the current user has listed on supabase
 
 })
