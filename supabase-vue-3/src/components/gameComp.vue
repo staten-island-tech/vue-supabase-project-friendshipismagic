@@ -1,7 +1,7 @@
 <template>
 <div class="page">
  <div class="clicktoPunch">
-  <img src="../assets/logo.png" @click="increaseClicks" />
+  <img src="../assets/logo.png" @click="updateClicks" />
         <br>
 <img class ="punchIcon" src="../assets/punch.png" alt="punch"> 
 </div>
@@ -12,9 +12,22 @@
 <script setup >
 import { supabase } from '../clients/supabase';
 import { ref } from "vue";
-import { useClicksStore } from "../stores/authStore";
+import { useLoginStore } from "../stores/authStore";
 
-const store = useClicksStore();
+const store = useLoginStore();
+
+
+// async function updateClicks(){
+//   const user = await supabase.auth.getSession();
+//   increaseClicks();
+//     const { data, error } = await supabase
+//     .from('profiles')
+//     // .update({ clicks: clickCount.value })
+//     .select('clicks')
+//     .eq('id', user.data.session.user.id)
+//     .select()
+//       console.log(data);
+// }
 
 async function increaseClicks(){
   const { data } = await supabase.rpc('increaseClicksby1') //calls the function that I made in supa to update the mathcing row 
