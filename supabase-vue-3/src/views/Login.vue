@@ -15,7 +15,7 @@
         <label for="name">User Name: </label>
         <input type="name" id="name" v-model="username">
  </div>
-
+<!-- v-model just attaches the value to a variable -->
         <div class="buttoooons">
     <button @click="createAccount">Create Account</button>
     <button @click="login">Log In</button>
@@ -28,15 +28,15 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { supabase } from "../clients/supabase";
-// import { useAuthStore } from "../stores/authStore"; 
 import { useLoginStore } from "../stores/authStore"; 
 
-// const authStore = useAuthStore();
+
 const loginStore = useLoginStore();
 
 let email = ref("");
 let password = ref("");
 let username = ref("");
+// the v-model variables
 
 async function createAccount(){
     const { data, error } = await supabase.auth.signUp({
@@ -48,13 +48,13 @@ async function createAccount(){
             }
         } 
     })
-    if (error) {
+    if (error) { //if can't create an account for any reason, it'll show the error message
         console.log(error)
         alert(error.message)
     }
     else {
-        alert("Account created!")
-        loginStore.loggedIn();
+        alert("Account created!") //if account is created, it will let the user know and change the status to the user being logged in
+        loginStore.loggedIn(); //value from the store, changes login value to 1 indicating a user is logged in
     }
 }
 
@@ -65,26 +65,26 @@ async function login(){
     })
 
     if (error) {
-        console.log(error)
+        console.log(error) //if can't login for any reason, it'll show the error message
         alert(error.message)
     }
     else {
         alert("Login was a success!")
         const localUser = await supabase.auth.getSession();
-        console.log(localUser);
-        loginStore.loggedIn();
+        console.log(localUser); //if login is successful, it will let the user know and change the status to the user being logged in
+        loginStore.loggedIn(); //value from the store, changes login value to 1 indicating a user is logged in
     }
 }
 
 async function logout(){
-    const { error } = await supabase.auth.signOut();
+    const { error } = await supabase.auth.signOut(); //signs out user
     if (error) {
         console.log(error)
-        alert(error.message)
+        alert(error.message) 
     }
     else {
         alert("Logout was a success!")
-        loginStore.loggedOut();
+        loginStore.loggedOut(); //value from the store, changes login value to 0 indicating a user is logged out
     }
 }
 </script>

@@ -5,22 +5,23 @@
         <br>
 <img class ="punchIcon" src="../assets/punch.png" alt="punch"> 
 </div>
-   <p>Punches: {{store.punches}} </p>
+   <p>Punches: {{store.punches}} </p> 
+   <!-- tried to display the punch value from the store but it doesnt work -->
   </div>
 </template>
 
 <script setup >
 import { supabase } from '../clients/supabase';
 import { ref } from "vue";
-import { useClicksStore } from "../stores/authStore";
+import { useClicksStore } from "../stores/authStore"; //importing the store
 
-const store = useClicksStore(); 
+const store = useClicksStore(); //I tried to get the number of punches from the store to display
 
 
 async function increaseClicks(){
-  const { data } = await supabase.rpc('increaseClicksby1') //calls the function that I made in supa to update the mathcing row 
+  const { data } = await supabase.rpc('increaseClicksby1') //calls the function that I made in Supabase to update the clicks column where the IDs match
   console.log(data)
-} //updates the table in supabase everytime you click
+} //updates the matching column in supabase everytime you click
 
 </script>
 

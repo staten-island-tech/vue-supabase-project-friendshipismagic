@@ -64,5 +64,6 @@ router.beforeEach((to, from, next) => {
         next();
     }
 })
-
+//tried to make it so that if a page requires a user to log in but the user isnt logged in, it will alert the user to 'Please log in'
+//doesnt work
 export default router
