@@ -4,6 +4,7 @@ import { ref } from "vue";
 import { createClient } from '@supabase/supabase-js'
 
 
+
 export const useLoginStore = defineStore("loginStore", {
     state: () => {
         return {login : 0} //basic value is that user is not logged in

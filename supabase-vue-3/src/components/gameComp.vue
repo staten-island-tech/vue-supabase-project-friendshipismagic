@@ -16,12 +16,17 @@ import { ref } from "vue";
 import { useClicksStore } from "../stores/authStore"; //importing the store
 
 const store = useClicksStore(); //I tried to get the number of punches from the store to display
-
+const punches = ref(store.punches);
 
 async function increaseClicks(){
-  const { data } = await supabase.rpc('increaseClicksby1') 
+  const { data } = await supabase.rpc('increaseClicksby1');
+  if (data){
+    store.punches = data;
+    punches.value = data; // update local reactive variable
+    console.log(data)
+  }
   //calls the rpc function that I made in Supabase to update the clicks column where the IDs match
-  console.log(data)
+
 } //updates the matching column in supabase everytime you click
 
 </script>
