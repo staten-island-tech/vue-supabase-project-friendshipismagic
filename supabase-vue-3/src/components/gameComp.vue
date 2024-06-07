@@ -19,7 +19,8 @@ const store = useClicksStore(); //I tried to get the number of punches from the 
 
 
 async function increaseClicks(){
-  const { data } = await supabase.rpc('increaseClicksby1') //calls the function that I made in Supabase to update the clicks column where the IDs match
+  const { data } = await supabase.rpc('increaseClicksby1') 
+  //calls the rpc function that I made in Supabase to update the clicks column where the IDs match
   console.log(data)
 } //updates the matching column in supabase everytime you click
 
